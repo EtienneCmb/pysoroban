@@ -1,5 +1,5 @@
 import click
-from base import sorobase
+from .base import sorobase
 
 @click.command()
 @click.option('--high', default=10, help='Highest possible number')

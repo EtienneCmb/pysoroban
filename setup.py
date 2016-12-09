@@ -1,13 +1,14 @@
 from setuptools import setup
 
 setup(
-        name='Python Soroban',
+        name='pysoroban',
         version='0.0',
-        py_modules=['pysoroban'],
         packages=['pysoroban'],
+        description='Simple program for soroban training',
         install_requires=[
             'Click',
             'numpy',
+            'time',
         ],
         url='https://github.com/EtienneCmb/pysoroban',
         author='Etienne Combrisson',
