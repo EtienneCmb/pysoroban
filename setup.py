@@ -8,7 +8,6 @@ setup(
         install_requires=[
             'Click',
             'numpy',
-            'time',
         ],
         url='https://github.com/EtienneCmb/pysoroban',
         author='Etienne Combrisson',
