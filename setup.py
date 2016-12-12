@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
         name='pysoroban',
-        version='0.2',
+        version='0.21',
         packages=['pysoroban'],
         description='Simple program for soroban training',
         install_requires=[
