@@ -35,6 +35,10 @@ class sorobase(object):
             self._operation = [self._operation[k] for k in rndop]
             self._operation[0] = '+'
 
+    def _timestep(self, start, roundto=10):
+        """Step between two time.time()"""
+        return np.round(roundto * (time.time() - start))/roundto
+
     def run(self, pause=30, inter=True, inf=False):
         # Check inputs :
         if pause is not None:
@@ -75,6 +79,8 @@ class sorobase(object):
             var = ''
             q = 0
             nbinter = 0
+            totstart = time.time()
+            meantime = []
             while var is '':
                 # Define a number :
                 nb = np.random.randint(self._nb_low, high=self._nb_high,
@@ -83,16 +89,15 @@ class sorobase(object):
                 symb = self._symb[np.random.randint(0, len(self._symb), 1)[0]]
                 if q == 0:
                     symb = '+'
-                print(str(q) + ' :' + symb + str(nb))
+                print(str(q+1) + ' :' + symb + str(nb))
                 # Define time start :
                 start = time.time()
                 # Update nbinter :
                 nbinter = eval(str(nbinter) + symb + str(nb))
-                if q is not 0:
-                    # User input :
-                    var = input(
-                        'Press <enter> to continue or any key to stop: ')
-                    endtime = np.round(10 * (time.time() - start))/10
-                    print('Result: ' + str(nbinter) +
-                          ', Time: ' + str(endtime) + 's\n')
+                # User input :
+                var = input('Press <enter> to continue or any key to stop: ')
+                meantime.append(self._timestep(start))
+                print('Result: ' + str(nbinter) + ', Answer in: ' + str(self._timestep(start)) + 's\n')
                 q += 1
+
+            print('Total time: '+str(self._timestep(totstart))+'Mean time: '+str(meantime.mean())+'s\n')
