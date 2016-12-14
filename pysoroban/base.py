@@ -100,4 +100,8 @@ class sorobase(object):
                 print('Result: ' + str(nbinter) + ', Answer in: ' + str(self._timestep(start)) + 's\n')
                 q += 1
 
-            print('Total time: '+str(self._timestep(totstart))+', Mean time: '+str(np.array(meantime).mean())+'s\n')
+            print('----------------------------------------------')
+            print('Final result: '+str(nbinter))
+            print('Total time: '+str(self._timestep(totstart))+'s')
+            print('Mean time: '+str(np.array(meantime).mean())+'s')
+            print('----------------------------------------------')
